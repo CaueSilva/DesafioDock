@@ -77,4 +77,9 @@ public class Account implements Serializable {
 		this.status = status.getCode();
 	}
 	
+	@Override
+	public String toString() {
+		return "Agência "+this.agency+", Número "+this.number;
+	}
+	
 }

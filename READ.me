@@ -1,0 +1,13 @@
+Criação do projeto de Desafio da Dock.
+
+Neste projeto abordei a arquitetura Restfull, mantendo as classes de resourcers, services e repository apartadas, separadas por pacotes e nomes, visando o desacoplamento e um código limpo.
+
+Deixei as implementações de validações referentes à negócios nas camadas de services, e as validações de campos dos payloads diretamente nos DTOs da aplicação utilizando annotations do próprio spring.
+
+Nas repositories, utilizei o JPA framework do spring para a criação das interfaces. Realizei a criação manual de alguns métodos nas interfaces para verificação de existência de algum registro em banco de dados, 
+no mais os métodos utilizados pelos services são pertencentes ao próprio JPA.  
+
+Implementei também exceções personalizadas e seus handlers, que são retornadas em casos específicos de validações de negócio e outros gerais, como problemas em banco de dados. 
+
+Realizei a implementação do código sempre visando o clean code. Separando cada classe por sua responsabilidade, evitando a repetição de código, deixando as classes, métodos e variáveis com nomes legíveis e que
+delegassem o propósito da existência delas assim que o desenvolvedor lesse o nome delas. 

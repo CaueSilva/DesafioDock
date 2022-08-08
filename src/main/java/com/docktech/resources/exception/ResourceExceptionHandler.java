@@ -9,6 +9,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import com.docktech.services.exceptions.DataBaseException;
 import com.docktech.services.exceptions.DataIntegrityException;
 import com.docktech.services.exceptions.InvalidOperationException;
 import com.docktech.services.exceptions.ObjectNotFoundException;
@@ -49,6 +50,12 @@ public class ResourceExceptionHandler {
 	public ResponseEntity<StandardError> invalidOperation(IllegalArgumentException e, HttpServletRequest request){
 		StandardError error = new StandardError(HttpStatus.BAD_REQUEST.value(), e.getMessage(), System.currentTimeMillis());
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+	}
+	
+	@ExceptionHandler(DataBaseException.class)
+	public ResponseEntity<StandardError> invalidOperation(DataBaseException e, HttpServletRequest request){
+		StandardError error = new StandardError(HttpStatus.INTERNAL_SERVER_ERROR.value(), e.getMessage(), System.currentTimeMillis());
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
 	}
 	
 }

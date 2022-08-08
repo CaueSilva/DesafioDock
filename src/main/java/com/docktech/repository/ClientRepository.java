@@ -9,5 +9,6 @@ import com.docktech.domain.Client;
 public interface ClientRepository extends JpaRepository<Client, Integer> {
 	
 	public Client findByCpf(String cpf);
+	public boolean existsByCpf(String cpf);
 	
 }

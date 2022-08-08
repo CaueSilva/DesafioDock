@@ -12,6 +12,7 @@ public interface AccountRepository extends JpaRepository<Account, Integer> {
 	
 	public Optional<Account> findByClientId(Integer clientId);
 	public Optional<Account> findByClientIdAndAgencyAndNumber(Integer clientId, String agency, String number);
-	public Optional<Account> findByAgencyAndNumber(String agency, String number);
-	
+	public boolean existsByClientId(Integer clientId);
+	public boolean existsByAgencyAndNumber(String agency, String number);
+	public boolean existsByClientIdAndAgencyAndNumber(Integer clientId, String agency, String number);
 }

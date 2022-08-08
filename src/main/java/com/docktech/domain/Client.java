@@ -30,7 +30,7 @@ public class Client implements Serializable {
 		this.name = name;
 	}
 
-	public Integer getClienId() {
+	public Integer getClientId() {
 		return clientId;
 	}
 

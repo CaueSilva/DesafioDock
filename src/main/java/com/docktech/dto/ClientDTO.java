@@ -5,9 +5,11 @@ import java.io.Serializable;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
+import org.springframework.validation.annotation.Validated;
 
 import com.docktech.domain.Client;
 
+@Validated
 public class ClientDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -23,7 +25,7 @@ public class ClientDTO implements Serializable {
 	}
 	
 	public ClientDTO(Client client) {
-		this.clientId = client.getClienId();
+		this.clientId = client.getClientId();
 		this.cpf = client.getCpf();
 		this.name = client.getName();
 	}
