@@ -1,26 +1,11 @@
 package com.docktech.services;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.util.Optional;
-
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mockito;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-
-import com.docktech.domain.Client;
-import com.docktech.repository.ClientRepository;
-import com.docktech.services.exceptions.DataIntegrityException;
-import com.docktech.services.exceptions.ObjectNotFoundException;
 
 @ExtendWith(SpringExtension.class)
 public class ClientServicesTest {
-
+/*
 	private ClientServices services;
 	
 	@MockBean
@@ -86,5 +71,5 @@ public class ClientServicesTest {
 	private Client returnNewClient() {
 		return new Client (1, "12345678910", "Caio Jorge");
 	}
-	
+*/	
 }
