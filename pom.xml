@@ -3,18 +3,19 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.7.1</version>
-		<relativePath>../pom.xml</relativePath>
 	</parent>
+
 	<groupId>com.docktech</groupId>
 	<artifactId>desafiodock</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>desafiodock</name>
 	<description>Demo project for Spring Boot</description>
-	<packaging>pom</packaging>
+
 	<properties>
 		<java.version>11</java.version>
 		<start-class>com.docktech.DesafiodockApplication</start-class>
@@ -32,7 +33,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -54,8 +54,20 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.7.0</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
@@ -68,20 +80,11 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
-				<mainClass>com.docktech.DesafiodockApplication</mainClass>
+					<mainClass>com.docktech.DesafiodockApplication</mainClass>
 				</configuration>
 			</plugin>
 		</plugins>
 		<finalName>desafiodock</finalName>
 	</build>
 
-	<modules>
-		<module>integration</module>
-		<module>library-client</module>
-		<module>library-account</module>
-		<module>domain-account</module>
-		<module>domain-client</module>
-		<module>library-exceptions</module>
-		<module>library-utils</module>
-	</modules>
 </project>
