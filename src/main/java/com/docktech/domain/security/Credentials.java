@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 
+import org.hibernate.validator.constraints.Length;
+
 import com.docktech.security.enums.SecurityRoles;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -21,6 +23,7 @@ public class Credentials implements Serializable {
 	
 	@Id
 	@Column(unique=true) 
+	@Length(min=11, max=11, message="CPF inválido.")
 	private String cpf;
 	@JsonIgnore
 	private String senha;

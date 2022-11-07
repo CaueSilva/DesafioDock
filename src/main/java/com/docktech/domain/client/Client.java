@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.validator.constraints.Length;
+
 @Entity
 public class Client implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -16,6 +18,7 @@ public class Client implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)	
 	private Integer clientId;
 	@Column(unique=true) 
+	@Length(min=11, max=11)
 	private String cpf;
 	private String name;
 	
