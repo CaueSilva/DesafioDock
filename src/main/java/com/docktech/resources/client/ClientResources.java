@@ -37,7 +37,7 @@ public class ClientResources {
 				@RequestParam(value="page", defaultValue="0") Integer page,
 				@RequestParam(value="linesPerPage", defaultValue="10") Integer linesPerPage,
 				@RequestParam(value="direction", defaultValue = "ASC") String direction,
-				@RequestParam(value="orderBy", defaultValue = "nome") String orderBy
+				@RequestParam(value="orderBy", defaultValue = "name") String orderBy
 			){
 		Page<Client> clientList = service.findAllClients(new ClientPageRequest(page, linesPerPage, direction, orderBy));
 		return ResponseEntity.ok().body(clientList);

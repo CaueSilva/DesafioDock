@@ -1,23 +1,23 @@
-package com.docktech.config;
+package com.docktech.config.test;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
-import com.docktech.services.configuration.test.DataBasePrd;
+import com.docktech.services.configuration.test.DataBaseTest;
 
 @Configuration
-@Profile("prd")
-public class PrdConfiguration {
+@Profile("test")
+public class TestConfiguration {
 	
 	@Autowired
-	private DataBasePrd dataBasePrd;
+	private DataBaseTest dataBaseTest;
 	
 	@Bean
 	public boolean startDataBaseTest() {
 		
-		dataBasePrd.startDataBase();
+		dataBaseTest.startDataBase();
 		
 		return true;
 	}

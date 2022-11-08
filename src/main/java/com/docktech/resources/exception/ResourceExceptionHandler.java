@@ -9,6 +9,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import com.docktech.services.exceptions.AuthorizationException;
 import com.docktech.services.exceptions.DataBaseException;
 import com.docktech.services.exceptions.DataIntegrityException;
 import com.docktech.services.exceptions.InvalidOperationException;
@@ -55,6 +56,12 @@ public class ResourceExceptionHandler {
 	@ExceptionHandler(DataBaseException.class)
 	public ResponseEntity<StandardError> invalidOperation(DataBaseException e, HttpServletRequest request){
 		StandardError error = new StandardError(HttpStatus.INTERNAL_SERVER_ERROR.value(), e.getMessage(), System.currentTimeMillis());
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
+	}
+	
+	@ExceptionHandler(AuthorizationException.class)
+	public ResponseEntity<StandardError> invalidOperation(AuthorizationException e, HttpServletRequest request){
+		StandardError error = new StandardError(HttpStatus.FORBIDDEN.value(), e.getMessage(), System.currentTimeMillis());
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
 	}
 	

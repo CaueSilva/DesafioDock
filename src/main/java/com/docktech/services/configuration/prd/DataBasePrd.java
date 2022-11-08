@@ -1,4 +1,4 @@
-package com.docktech.services.configuration.test;
+package com.docktech.services.configuration.prd;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -17,9 +17,9 @@ public class DataBasePrd {
 	
 	public void startDataBase() {
 			
-		Credentials credentials1 = new Credentials("04657801811", passwordEncoder.encode("$enhaLonga321$*1"), 2);
+		Credentials credentials = new Credentials("04657801811", passwordEncoder.encode("$enhaLonga321$*1"), 2);
 		
-		securityRepository.save(credentials1);
+		securityRepository.save(credentials);
 		
 	}
 	

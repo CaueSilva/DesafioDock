@@ -39,6 +39,7 @@ public class AccountMovementServices {
 		} catch (DataBaseException e) {
 			
 			logger.logDataBaseError();
+			logger.logMessage(e.getMessage());
 			throw new DataBaseException("Houve um erro na requisição. Tente novamente em alguns instantes.");
 		}
 
@@ -105,6 +106,7 @@ public class AccountMovementServices {
 		} catch (Throwable e) {
 			
 			logger.logDataBaseError();
+			logger.logMessage(e.getMessage());
 			throw new DataBaseException("Houve um erro na requisição. Tente novamente em alguns instantes.");
 			
 		}
@@ -125,6 +127,7 @@ public class AccountMovementServices {
 		} catch (Throwable e) {
 			
 			logger.logDataBaseError();
+			logger.logMessage(e.getMessage());
 			throw new DataBaseException("Houve um erro na requisição. Tente novamente em alguns instantes.");
 			
 		}
@@ -149,6 +152,7 @@ public class AccountMovementServices {
 		} catch (Throwable e) {
 			
 			logger.logDataBaseError();
+			logger.logMessage(e.getMessage());
 			throw new DataBaseException("Houve um erro na requisição. Tente novamente em alguns instantes.");
 			
 		}

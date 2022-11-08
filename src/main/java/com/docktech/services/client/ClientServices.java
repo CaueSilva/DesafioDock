@@ -39,17 +39,19 @@ public class ClientServices {
 	public Client insert(Client client) {
 		logger.logMessage("Iniciando inserção de cliente.");
 		
+		securityServices.checkIfIsTheSameCustomer(client.getCpf());
+		
 		if (clientAlreadyExists(client.getCpf())) {
 			throw new DataIntegrityException("CPF já existente na base.");
 		}
 		
-		securityServices.checkIfIsTheSameCustomer(client.getCpf());
 
 		try {
 			client = repo.save(client);
 		} catch (Throwable e) {
 			
 			logger.logDataBaseError();
+			logger.logMessage(e.getMessage());
 			throw new DataBaseException("Houve um erro na requisição. Tente novamente em alguns instantes.");
 			
 		}
@@ -73,6 +75,7 @@ public class ClientServices {
 		} catch (Throwable e) {
 			
 			logger.logDataBaseError();
+			logger.logMessage(e.getMessage());
 			throw new DataBaseException("Houve um erro na requisição. Tente novamente em alguns instantes.");
 			
 		}
@@ -84,7 +87,7 @@ public class ClientServices {
 	}
 
 	public Page<Client> findAllClients(ClientPageRequest clientPageRequest) {
-
+		
 		logger.logMessage("Iniciando busca de todos os clientes na base.");
 		Page<Client> list;
 		
@@ -95,6 +98,7 @@ public class ClientServices {
 		} catch (Throwable e) {
 			
 			logger.logDataBaseError();
+			logger.logMessage(e.getMessage());
 			throw new DataBaseException("Houve um erro na requisição. Tente novamente em alguns instantes.");
 			
 		}
