@@ -62,7 +62,7 @@ public class ResourceExceptionHandler {
 	@ExceptionHandler(AuthorizationException.class)
 	public ResponseEntity<StandardError> invalidOperation(AuthorizationException e, HttpServletRequest request){
 		StandardError error = new StandardError(HttpStatus.FORBIDDEN.value(), e.getMessage(), System.currentTimeMillis());
-		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
+		return ResponseEntity.status(HttpStatus.FORBIDDEN).body(error);
 	}
 	
 }

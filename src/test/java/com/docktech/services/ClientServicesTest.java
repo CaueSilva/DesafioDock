@@ -1,19 +1,40 @@
 package com.docktech.services;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.util.Optional;
+
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mockito;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import com.docktech.domain.client.Client;
+import com.docktech.repository.ClientRepository;
+import com.docktech.services.client.ClientServices;
+import com.docktech.services.exceptions.DataBaseException;
+import com.docktech.services.exceptions.DataIntegrityException;
+import com.docktech.services.exceptions.ObjectNotFoundException;
+import com.docktech.services.security.SecurityServices;
 
 @ExtendWith(SpringExtension.class)
 public class ClientServicesTest {
-/*
+
 	private ClientServices services;
 	
 	@MockBean
 	private ClientRepository repo;
 	
+	@MockBean
+	private SecurityServices securityServices; 
+	
 	@BeforeEach
 	public void setUp() {
-		this.services = new ClientServices(repo);
+		this.services = new ClientServices(repo, securityServices);
 	}
 	
 	@Test
@@ -38,6 +59,17 @@ public class ClientServicesTest {
 		
 		Throwable t = Assertions.catchThrowable(() -> services.insert(client));
 		assertThat(t).isInstanceOf(DataIntegrityException.class);
+	}
+	
+	@Test
+	@DisplayName("Deve dar erro na base de dados ao salvar cliente")
+	public void mustReturnDataBaseErrorOnClientSave() {
+		Client client = returnNewClient();
+		
+		Mockito.when(services.insert(client)).thenThrow(DataBaseException.class);
+		
+		Throwable t = Assertions.catchThrowable(() -> services.insert(client));
+		assertThat(t).isInstanceOf(DataBaseException.class);
 	}
 	
 	@Test
@@ -68,8 +100,22 @@ public class ClientServicesTest {
 		assertThat(t).isInstanceOf(ObjectNotFoundException.class);
 	}
 	
+	@Test
+	@DisplayName("Deve dar erro na base de dados ao buscar cliente")
+	public void mustReturnDataBaseErrorWhenSearchingForClient() {
+		Integer id = 1;
+		Client client = returnNewClient();
+		client.setClientId(id);
+		
+		Mockito.when(repo.findById(Mockito.anyInt())).thenReturn(Optional.of(client));
+		Mockito.when(services.findById(Mockito.anyInt())).thenThrow(DataBaseException.class);
+				
+		Throwable t = Assertions.catchThrowable(() -> services.findById(id));
+		assertThat(t).isInstanceOf(DataBaseException.class);
+	}
+
 	private Client returnNewClient() {
 		return new Client (1, "12345678910", "Caio Jorge");
 	}
-*/	
+	
 }

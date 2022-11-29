@@ -31,8 +31,17 @@ public class ClientServices {
 
 	private static ApplicationLogger logger = new ApplicationLogger(ClientServices.class);
 
+	public ClientServices(){
+		
+	}
+	
 	public ClientServices(ClientRepository repo) {
 		this.repo = repo;
+	}
+	
+	public ClientServices(ClientRepository repo, SecurityServices securityServices) {
+		this.repo = repo;
+		this.securityServices = securityServices;
 	}
 
 	@Transactional
@@ -80,7 +89,9 @@ public class ClientServices {
 			
 		}
 		
-		securityServices.checkIfIsTheSameCustomer(client.get().getCpf());
+		if(!client.isEmpty()) {
+			securityServices.checkIfIsTheSameCustomer(client.get().getCpf());
+		}
 
 		return client.orElseThrow(() -> new ObjectNotFoundException("Cliente ID " + id + " não encontrado."));
 

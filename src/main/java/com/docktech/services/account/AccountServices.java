@@ -134,7 +134,7 @@ public class AccountServices {
 			
 		}
 		
-		securityServices.checkIfIsTheSameCustomer(clientServices.findById(account.get().getClientId()).getCpf());
+		securityServices.checkIfIsTheSameCustomer(clientServices.findById(clientId).getCpf());
 
 		logger.logMessage("Busca concluída com sucesso.");
 		return account.orElseThrow(
